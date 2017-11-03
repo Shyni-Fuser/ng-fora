@@ -9,13 +9,17 @@ import {UsersService} from "../../services/users.service";
 })
 export class UsersComponent implements OnInit {
 
-  ngOnInit() {
-  }
-
   users: User[] = [];
 
+  ngOnInit() {
+    //this.usersService.resetCache();
+    this.usersService.getUsers().subscribe(users => {
+      this.users = users;
+      this.usersService.logged = users[2];
+    })
+  }
+
   constructor(public usersService:UsersService){
-    this.usersService.getUsers().subscribe(users => this.users = users)
   }
 
   getUsers():User[] {

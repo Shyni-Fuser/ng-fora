@@ -11,9 +11,11 @@ export class UsersService {
   constructor(public http: Http) { }
 
   getUsers():Observable<User[]>{
-    return this.http
+
+    const observable = this.http
       .get("http://localhost:8080/jax-rs-1/api/users")
-      .map(response => response.json());
+      .map(response => response.json())
+    return observable;
   }
 
   createUser(user:User){
