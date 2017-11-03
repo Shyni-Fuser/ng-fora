@@ -1,0 +1,5 @@
+<form name ="form" #userForm="ngForm">
+  <input type="text" [(ngModel)]="comment.content" name="commentContent" minlength="2">
+  <button (click)="postComment()" [disabled]="!userForm.form.valid">Post comment</button>
+</form>
+

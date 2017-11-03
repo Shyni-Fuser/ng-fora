@@ -1,0 +1,12 @@
+<h2>{{topic.title}}</h2>
+<div>Written by : {{topic.user.name}}</div>
+<br>
+<ul>
+  <li *ngFor="let currentComment of topic.comments">
+    <rc-comment [comment]="currentComment"></rc-comment>
+  </li>
+</ul>
+<br>
+<rc-comment-form (eventEmitter)="updateComments($event)"></rc-comment-form> <!--(onAdd)-->
+
+

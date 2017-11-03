@@ -2,4 +2,11 @@
 <div *ngFor="let user of getUsers(); let i = index; let e=even; let o=odd;" [ngClass]="{odd:o, even:e}">
   {{user.name + " " + user.id + " " + user.email}}
 </div>
-<rc-users-form (eventEmitter)="updateList($event)">  </rc-users-form>
+<br>
+<rc-users-form (eventEmitter)="updateList($event)"></rc-users-form>
+<br>
+<select [(ngModel)]="usersService.logged">
+  <option *ngFor="let user of getUsers()" [ngValue]="user">{{user.name}}</option>
+</select>
+
+logged: {{usersService.logged?.name}} <!-- verification du select -->
